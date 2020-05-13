@@ -3,6 +3,10 @@ name: Qv2ray Windows Installer
 on: 
   push:
 
+env:
+  CC: cl.exe
+  CXX: cl.exe
+
 jobs:
   build:
     strategy:

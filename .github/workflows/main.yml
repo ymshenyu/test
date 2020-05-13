@@ -26,10 +26,6 @@ jobs:
     runs-on: ${{ matrix.platform }}
     
     steps:
-      - name: Get the version
-        id: get_version
-        shell: bash
-        run: echo ::set-output name=VERSION::$(echo $GITHUB_REF | cut -d / -f 3)
       - name: Checking out sources
         uses: actions/checkout@v2
         with:
@@ -61,7 +57,6 @@ jobs:
           cached: ${{ steps.cache-qt.outputs.cache-hit }}
 # =========================================================================================================
       - name: Win-${{ matrix.arch }} - ${{ matrix.qt_version }} - Build preparation - Download Dependencies
-        shell: bash
         run: |
          choco install -y ninja
 # ========================================================================================================= Generate MakeFile and Build
